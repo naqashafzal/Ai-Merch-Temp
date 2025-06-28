@@ -6,6 +6,9 @@ This project is a proof-of-concept Python script that automatically generates br
 
 The application takes a website URL, analyzes it to extract branding elements (logo, colors, screenshot), and then generates a sample coffee mug design and a print-ready PDF.
 
+## Example Video
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/sKKT-4N3hPU/0.jpg)](https://www.youtube.com/watch?v=sKKT-4N3hPU)
+
 ## Core Features
 
 -   **Website Analysis**: Parses a website to extract its logo, dominant colors, and a full-page screenshot.
