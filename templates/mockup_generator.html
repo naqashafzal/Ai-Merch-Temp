@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup Generator - AI Merchandise Template Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+      <header>
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span class="app-name">AI Merchandise Template Generator</span>
+            </div>
+            <nav>
+                <a href="/"><i class="fa-solid fa-magnifying-glass"></i> New Analysis</a>
+                <a href="{{ url_for('history_page') }}"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="main-content">
+                <h2>Mockup Generator</h2>
+                <p class="subtitle">Select a template and use the brand assets for <strong id="domain-name-display"></strong> to create a mockup.</p>
+                
+                <div class="generator-workspace">
+                    <div class="controls-panel">
+                        <h3><i class="fa-solid fa-sliders"></i> Rebrand & Customize</h3>
+
+                        <div class="control-group">
+                            <label>1. Select Template</label>
+                            <div class="template-tabs">
+                                <button class="tab-button active" data-template="mug"><i class="fa-solid fa-mug-hot"></i> Mug</button>
+                                <button class="tab-button" data-template="card"><i class="fa-solid fa-id-card"></i> Card</button>
+                                <button class="tab-button" data-template="tshirt"><i class="fa-solid fa-shirt"></i> T-Shirt</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label>2. Choose Color</label>
+                            <div id="color-palette"></div>
+                        </div>
+
+                        <div id="contextual-controls">
+                            <div class="control-group" id="card-controls" style="display: none;">
+                                <label>Business Card Text</label>
+                                <div class="input-group"><i class="fa-solid fa-user"></i><input type="text" id="custom-name" placeholder="Your Name"></div>
+                                <div class="input-group"><i class="fa-solid fa-briefcase"></i><input type="text" id="custom-title" placeholder="Your Title"></div>
+                            </div>
+                            <div class="control-group" id="tshirt-controls" style="display: none;">
+                                <label>T-Shirt Slogan (optional)</label>
+                                <div class="input-group"><i class="fa-solid fa-comment-dots"></i><input type="text" id="custom-slogan" placeholder="Your brand's slogan"></div>
+                            </div>
+                        </div>
+
+                        <button id="regenerate-button" class="cta-button">
+                            <i class="fa-solid fa-arrows-rotate"></i> Generate Mockup
+                        </button>
+                    </div>
+
+                    <div class="mockup-display-area">
+                        <div id="mockup-loader" class="loader" style="display: none;"></div>
+                        <div id="mockup-output" class="generated-item-card" style="display: none;">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script id="analysis-data" type="application/json">
+        {{ analysis_data | tojson | safe }}
+    </script>
+    
+    <script src="{{ url_for('static', filename='mockup_script.js') }}"></script>
+</body>
+</html>

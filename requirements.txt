@@ -1,0 +1,11 @@
+Flask
+requests
+beautifulsoup4
+selenium
+webdriver-manager
+Pillow
+colorgram.py
+reportlab
+cairosvg
+cssutils
+google-generativeai

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis History - AI Merchandise Template Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ===== HEADER ===== -->
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span class="app-name">AI Merchandise Template Generator</span>
+            </div>
+            <nav>
+                <a href="/"><i class="fa-solid fa-magnifying-glass"></i> New Analysis</a>
+                <a href="{{ url_for('history_page') }}"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+            </nav>
+        </header>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main>
+            <div class="main-content">
+                <h2>Analysis History</h2>
+                <p class="subtitle">Review your past website analysis sessions.</p>
+                
+                <div class="history-container">
+                    {% if history %}
+                        {% for item in history %}
+                        <div class="history-card">
+                            <div class="history-card-header">
+                                <img src="{{ item.base_analysis.logo_path if item.base_analysis.logo_path else '' }}" 
+                                     alt="Logo for {{ item.domain }}" 
+                                     class="history-logo"
+                                     onerror="this.style.display='none'">
+                                <div>
+                                    <h4 class="history-domain">{{ item.domain }}</h4>
+                                    <p class="history-timestamp">{{ item.timestamp | format_datetime }}</p>
+                                </div>
+                            </div>
+                            <div class="history-card-body">
+                                <p class="ai-description">{{ item.base_analysis.ai_description }}</p>
+                                <div class="history-colors">
+                                    <!-- This line is correct, even if your linter shows a warning -->
+                                    {% for color in item.base_analysis.colors %}
+                                    <div class="color-box-small" style="background-color: {{ color }};" title="{{ color }}"></div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="history-card-footer">
+                               <a href="{{ url_for('report_page', history_id=item.id) }}" class="history-button">View Report</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no-history-message">You have no analysis history yet. Go to the "New Analysis" page to get started.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

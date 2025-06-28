@@ -1,0 +1,171 @@
+/* static/style.css */
+
+/* 1. FONT AND COLOR VARIABLES */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --bg-dark: #121829;
+    --bg-light: #1A2238;
+    --border-color: #3A4468;
+    --primary-purple: #7A5CFA;
+    --primary-purple-light: #9d86ff;
+    --text-light: #F2F2F2;
+    --text-medium: #A9B2CC;
+    --text-dark: #707A9B;
+    --font-family: 'Inter', system-ui, sans-serif;
+    --pixel-font: 'Press Start 2P', cursive;
+}
+
+/* 2. GENERAL STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+}
+
+a {
+    color: var(--primary-purple-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--text-light);
+}
+
+/* 3. HEADER (Used on all pages) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.app-name {
+    font-family: var(--pixel-font);
+    font-size: 16px;
+    color: var(--primary-purple);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.logo .fa-wand-magic-sparkles {
+    color: var(--primary-purple);
+    font-size: 20px;
+}
+nav {
+    display: flex;
+    gap: 1.5rem;
+}
+nav a {
+    color: var(--text-medium);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 4. MAIN CONTENT & SHARED STYLES */
+main { margin-top: 3rem; }
+.main-content h2 { font-size: 2rem; text-align: center; }
+.subtitle { font-size: 1.1rem; color: var(--text-medium); text-align: center; max-width: 600px; margin: 0.5rem auto 3rem auto; }
+.form-section, .controls-panel { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; }
+label { display: block; font-weight: 500; color: var(--text-medium); margin-bottom: 0.75rem; }
+.input-group { position: relative; margin-bottom: 1rem; }
+.input-group .fa-solid { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-dark); }
+#url-input, #custom-name, #custom-title, #custom-slogan {
+    width: 100%; background-color: var(--bg-dark); border: 1px solid var(--border-color);
+    border-radius: 8px; padding: 0.8rem 1rem 0.8rem 2.5rem; color: var(--text-light); font-size: 1rem;
+}
+#url-input:focus, #custom-name:focus, #custom-title:focus, #custom-slogan:focus {
+    outline: none; border-color: var(--primary-purple);
+}
+.input-hint { font-size: 0.9rem; color: var(--text-dark); margin-top: 0.5rem; }
+.cta-button {
+    width: 100%; background: var(--primary-purple); color: var(--text-light); font-size: 1.1rem;
+    font-weight: 600; padding: 1rem; border: none; border-radius: 8px; cursor: pointer; margin-top: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; align-items: center;
+    justify-content: center; gap: 0.75rem;
+}
+.cta-button:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(122, 92, 250, 0.3); }
+.loader { margin: 40px auto; border: 5px solid var(--bg-light); border-top: 5px solid var(--primary-purple); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.error-box { margin-top: 2rem; padding: 1rem; background-color: rgba(224, 49, 49, 0.1); border: 1px solid #e03131; color: #ff8787; border-radius: 8px; }
+
+/* 5. HOMEPAGE & REPORT PAGE STYLES */
+#results-container { margin-top: 3rem; }
+.result-section-full { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.result-section-full h3 { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; font-size: 1.2rem; color: var(--text-light); }
+#screenshot-img { width: 100%; border-radius: 8px; border: 1px solid var(--border-color); }
+.results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.result-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; }
+.result-card h4 { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.result-card p { color: var(--text-medium); margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.6; }
+.logo-preview { max-width: 100px; max-height: 100px; display: block; margin-top: 1rem; }
+#ai-recommendations-list { list-style: none; padding-left: 0; }
+#ai-recommendations-list li { color: var(--text-medium); padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 0.75rem; }
+#ai-recommendations-list li:last-child { border-bottom: none; }
+#ai-recommendations-list li .fa-check { color: var(--primary-purple); }
+.generated-item-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; margin-top: 1.5rem; display: flex; align-items: center; gap: 1.5rem; transition: opacity 0.3s ease; }
+.item-info h5 { font-size: 1.2rem; margin-bottom: 1rem; }
+.download-button { background-color: var(--bg-dark); border: 1px solid var(--border-color); padding: 0.75rem 1.25rem; border-radius: 8px; color: var(--text-light); font-weight: 500; display: inline-flex; align-items: center; gap: 0.5rem; }
+.download-button:hover { border-color: var(--primary-purple); color: var(--primary-purple); }
+
+/* 6. MOCKUP GENERATOR PAGE STYLES */
+.generator-workspace { display: grid; grid-template-columns: 320px 1fr; gap: 2rem; margin-top: 2rem; }
+.controls-panel h3 { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+.control-group { margin-bottom: 2rem; }
+.template-tabs { display: flex; background-color: var(--bg-dark); padding: 0.5rem; border-radius: 8px; }
+.tab-button {
+    flex: 1 1 0; /* Allow equal growth and shrinking */
+    padding: 0.75rem 0.5rem; font-size: 0.9rem; font-weight: 500; color: var(--text-medium);
+    background-color: transparent; border: 1px solid transparent; border-radius: 6px;
+    cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+.tab-button:hover { background-color: var(--bg-light); color: var(--text-light); }
+.tab-button.active { background-color: var(--primary-purple); color: var(--text-light); font-weight: 600; }
+#color-palette { display: flex; gap: 12px; flex-wrap: wrap; }
+.color-box { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--bg-dark); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.color-box:hover { transform: scale(1.1); }
+.color-box.active { box-shadow: 0 0 0 3px var(--bg-dark), 0 0 0 5px var(--primary-purple-light); transform: scale(1.1); }
+#contextual-controls .control-group { margin-bottom: 0; }
+#contextual-controls .input-group { margin-top: 1rem; }
+.mockup-display-area .generated-item-card { background-color: transparent; border: none; padding: 0; width: 100%; flex-direction: column; align-items: flex-start; }
+.mockup-display-area .generated-item-card img { width: 100%; max-width: none; }
+.mockup-display-area .item-info { margin-top: 1rem; }
+
+/* 7. HISTORY PAGE STYLES */
+.history-container { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+.history-card { background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; }
+.history-card-header { display: flex; align-items: center; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+.history-logo { width: 50px; height: 50px; object-fit: contain; background-color: rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 5px; }
+.history-domain { font-size: 1.2rem; font-weight: 600; color: var(--text-light); }
+.history-timestamp { font-size: 0.9rem; color: var(--text-dark); }
+.history-card-body { padding: 1rem 0; }
+.history-colors { display: flex; gap: 8px; margin-top: 1rem; }
+.color-box-small { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--bg-dark); }
+.history-card-footer { margin-top: auto; padding-top: 1rem; text-align: right; }
+.history-button { background-color: var(--bg-dark); border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-light); font-weight: 500; }
+.history-button:hover { border-color: var(--primary-purple); color: var(--primary-purple); }
+.no-history-message { text-align: center; color: var(--text-medium); padding: 3rem; background-color: var(--bg-light); border-radius: 12px; }
+

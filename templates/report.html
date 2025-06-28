@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Report for {{ report.domain }} - AI Merchandise Template Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+       <header>
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span class="app-name">AI Merchandise Template Generator</span>
+            </div>
+            <nav>
+                <a href="/"><i class="fa-solid fa-magnifying-glass"></i> New Analysis</a>
+                <a href="{{ url_for('history_page') }}"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="main-content">
+                <h2>Analysis Report for <span class="report-domain">{{ report.domain }}</span></h2>
+                <p class="subtitle">Generated on {{ report.timestamp | format_datetime }}</p>
+
+                <div id="results-container">
+                    <div id="screenshot-result-section" class="result-section-full">
+                        <h3><i class="fa-solid fa-desktop"></i> Website Screenshot</h3>
+                        <img id="screenshot-img" src="/{{ report.base_analysis.screenshot_path }}" alt="Full website screenshot">
+                    </div>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h4><i class="fa-solid fa-eye"></i> Brand Aesthetics</h4>
+                            <p id="ai-description-text">{{ report.base_analysis.ai_description }}</p>
+                            {% if report.base_analysis.logo_path %}
+                                <img id="logo-img" src="/{{ report.base_analysis.logo_path }}" alt="Extracted Logo" class="logo-preview">
+                            {% endif %}
+                        </div>
+                        <div class="result-card">
+                            <h4><i class="fa-solid fa-palette"></i> Color Palette</h4>
+                            <p>Dominant brand colors.</p>
+                            <div class="color-palette-display">
+                                {% for color in report.base_analysis.colors %}
+                                <div class="color-box" style="background-color: {{ color }};" title="{{ color }}"></div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="recommendations-card" class="result-section-full">
+                        <h3><i class="fa-solid fa-lightbulb"></i> AI Design Recommendations</h3>
+                        <ul id="ai-recommendations-list">
+                            {% for rec in report.base_analysis.ai_recommendations %}
+                            <li><i class="fa-solid fa-check"></i> {{ rec }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <h3 class="results-header">Generated Mockups</h3>
+                    
+                    {% if report.results.mug %}
+                    <div id="mug-results-section" class="generated-item-card">
+                        <img src="/{{ report.results.mug.design_path }}" alt="Generated Mug Design">
+                        <div class="item-info">
+                            <h5>Coffee Mug Design</h5>
+                            <a href="/{{ report.results.mug.pdf_path }}" download="mug_print_ready.pdf" class="download-button"><i class="fa-solid fa-download"></i> Download PDF</a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if report.results.card %}
+                    <div id="card-results-section" class="generated-item-card">
+                        <img src="/{{ report.results.card.design_path }}" alt="Generated Business Card">
+                        <div class="item-info">
+                            <h5>Business Card Design</h5>
+                            <a href="/{{ report.results.card.pdf_path }}" download="card_print_ready.pdf" class="download-button"><i class="fa-solid fa-download"></i> Download PDF</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if report.results.tshirt %}
+                    <div id="tshirt-results-section" class="generated-item-card">
+                         <img src="/{{ report.results.tshirt.design_path }}" alt="Generated T-Shirt Design">
+                        <div class="item-info">
+                            <h5>T-Shirt Design</h5>
+                            <a href="/{{ report.results.tshirt.pdf_path }}" download="tshirt_print_ready.pdf" class="download-button"><i class="fa-solid fa-download"></i> Download PDF</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

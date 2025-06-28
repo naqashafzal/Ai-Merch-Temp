@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Merchandise Template Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+       <header>
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span class="app-name">AI Merchandise Template Generator</span>
+            </div>
+            <nav>
+                <a href="/"><i class="fa-solid fa-magnifying-glass"></i> Analyze</a>
+                <a href="{{ url_for('history_page') }}"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="main-content">
+                <h2>AI Merchandise Template Generator</h2>
+                <p class="subtitle">Analyze websites and generate branded merchandise templates using AI-powered design intelligence.</p>
+
+                <form id="generator-form">
+                    <section class="form-section">
+                        <h3><i class="fa-solid fa-globe"></i> Analyze Website</h3>
+                        
+                        <label for="url-input">Website URL</label>
+                        <div class="input-group">
+                            <i class="fa-solid fa-link"></i>
+                            <input type="text" id="url-input" placeholder="https://example.com" required>
+                        </div>
+                        <p class="input-hint">Enter the full URL of the website you want to analyze</p>
+                        
+                    </section>
+                    
+                    <button type="submit" class="cta-button">
+                        <i class="fa-solid fa-bolt"></i> Analyze Website
+                    </button>
+                </form>
+
+                <div id="loader" class="loader" style="display: none;"></div>
+
+                <div id="results-container" style="display: none;">
+                    <div id="screenshot-result-section" class="result-section-full" style="display: none;">
+                        <h3><i class="fa-solid fa-desktop"></i> Website Screenshot</h3>
+                        <img id="screenshot-img" src="" alt="Full website screenshot">
+                    </div>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h4><i class="fa-solid fa-eye"></i> Brand Aesthetics</h4>
+                            <p id="ai-description-text"></p>
+                            <img id="logo-img" src="" alt="Extracted Logo" class="logo-preview">
+                        </div>
+                        <div class="result-card">
+                            <h4><i class="fa-solid fa-palette"></i> Color Palette</h4>
+                            <p>Dominant brand colors.</p>
+                            <div id="color-palette"></div>
+                        </div>
+                    </div>
+                    <div id="recommendations-card" class="result-section-full" style="display: none;">
+                        <h3><i class="fa-solid fa-lightbulb"></i> AI Design Recommendations</h3>
+                        <ul id="ai-recommendations-list"></ul>
+                    </div>
+                    
+                    <div id="next-step-section" style="display: none; text-align: center; margin-top: 2rem;">
+                        <a href="#" id="go-to-mockups-btn" class="cta-button">
+                            <i class="fa-solid fa-palette"></i> Continue to Interactive Mockup Generator
+                        </a>
+                    </div>
+                </div>
+                
+                <div id="error-container" class="error-box" style="display: none;">
+                    <p id="error-message"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
